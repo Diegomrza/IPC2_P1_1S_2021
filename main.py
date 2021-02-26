@@ -1,24 +1,37 @@
-from ListaCircularEnlazada import ListaCircularEnlazada
+from ListaDoblementeEnlazada import ListaDoblementeEnlazada
+from ListaSimple import ListaSimple
+import xml.etree.ElementTree as ET
+from xml import etree
 
-lista_nueva = ListaCircularEnlazada()
+#  C:\Users\Squery\Desktop\Proyecto 1 IPC2\Matriz.xml
+#  C:\Users\Squery\Desktop\Proyecto 1 IPC2\Matriz2.xml
+ruta = ""
+lista_enlazada = ListaDoblementeEnlazada()
 
-lista_nueva.insertar_final('matriz1', 5, 5)
-lista_nueva.insertar_final('matriz2', 4, 4)
-lista_nueva.insertar_final('matriz3', 3, 3)
-lista_nueva.insertar_final('matriz4', 2, 2)
-lista_nueva.insertar_final('matriz5', 1, 1)
+def cargar_archivo():
 
-print(lista_nueva.mostrar())
+    global ruta 
+    ruta = input()
+    
+def procesar_archivo(ruta):
 
+    global lista_enlazada
 
-def cargar_archivo(ruta):
     try:
-        with open(ruta) as file:
-            contenido = file.read()
-            print(contenido) 
-    except:
-        print('El archivo no pudo ser abierto porque el archivo: ' + ruta + ' no existe')
+        tree = ET.parse(ruta)
+        root = tree.getroot()
         
+        for elemento in root:
+            lista_simple = ListaSimple()
+            for subelemento in elemento:
+                lista_simple.insertar(subelemento.attrib['x'], subelemento.attrib['y'], subelemento.text)
+            lista_enlazada.insertar_final(elemento.attrib['nombre'], elemento.attrib['n'], elemento.attrib['m'], lista_simple)
+            
+        print('archivo procesado con exito')
+    except IOError:
+        print("El archivo no se pudo leer")
+    
+
 x = True
 
 while x:
@@ -34,10 +47,10 @@ while x:
 
     if entrada == '1':
         print('Ingrese la ruta del archivo: ')
-        ruta = input()
-        cargar_archivo(ruta)
+        cargar_archivo()
     elif entrada == '2':
-        print('opcion 2')
+        print("Procesando archivo")
+        procesar_archivo(ruta)
     elif entrada == '3':
         print('opcion 3')
     elif entrada == '4':
@@ -47,3 +60,13 @@ while x:
     elif entrada == '6':
         print('opcion 6')
         exit()
+    elif entrada > 6 or entrada < 0:
+        print('Opción inválida')
+
+'''try:
+        with open(ruta) as file:
+            contenido = file.read()
+            print(contenido) 
+    except IOError:
+        print('El archivo no pudo ser abierto porque el archivo: ' + ruta + ' no existe')
+'''
