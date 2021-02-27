@@ -14,23 +14,33 @@ def cargar_archivo():
     ruta = input()
     
 def procesar_archivo(ruta):
-
     global lista_enlazada
-
     try:
         tree = ET.parse(ruta)
         root = tree.getroot()
         
         for elemento in root:
+            contador = 0
             lista_simple = ListaSimple()
             for subelemento in elemento:
                 lista_simple.insertar(subelemento.attrib['x'], subelemento.attrib['y'], subelemento.text)
-            lista_enlazada.insertar_final(elemento.attrib['nombre'], elemento.attrib['n'], elemento.attrib['m'], lista_simple)
-            
+                contador += 1
+            if int(elemento.attrib['n'])*int(elemento.attrib['m']) == contador:
+                lista_enlazada.insertar_final(elemento.attrib['nombre'], elemento.attrib['n'], elemento.attrib['m'], lista_simple)
+                matriz_patrones(lista_simple)
+            else:
+                print("Los tamaños no coinciden")
+                #exit()
         print('archivo procesado con exito')
+
     except IOError:
         print("El archivo no se pudo leer")
     
+def matriz_patrones(matriz_simple):
+    print("Patrones")
+    matriz_simple.patrones()
+
+    return None
 
 x = True
 
@@ -60,13 +70,5 @@ while x:
     elif entrada == '6':
         print('opcion 6')
         exit()
-    elif entrada > 6 or entrada < 0:
+    elif int(entrada) > 6 or int(entrada) < 0:
         print('Opción inválida')
-
-'''try:
-        with open(ruta) as file:
-            contenido = file.read()
-            print(contenido) 
-    except IOError:
-        print('El archivo no pudo ser abierto porque el archivo: ' + ruta + ' no existe')
-'''

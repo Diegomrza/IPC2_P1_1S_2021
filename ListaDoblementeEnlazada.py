@@ -22,7 +22,6 @@ class ListaDoblementeEnlazada:
         while temporal is not None:
             print(temporal.nombre, " ", temporal.n, " ", temporal.m)
             temporal.matriz.mostrar()
-            print()
             temporal = temporal.siguiente
 
     def vacia(self):
