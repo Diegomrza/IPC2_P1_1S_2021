@@ -1,18 +1,21 @@
 from ListaDoblementeEnlazada import ListaDoblementeEnlazada #Importación del TDA Lista Doble
-from ListaSimple import ListaSimple #Importación del TDA Lista Simpre
-import xml.etree.ElementTree as ET  #Importacion de el módulo ElementTree
-from xml import etree               #Importacion del módulo para leer archivos xml
+from ListaSimple import ListaSimple                         #Importación del TDA Lista Simpre
+import xml.etree.ElementTree as ET                          #Importacion de el módulo ElementTree
+from xml import etree                                       #Importacion del módulo para leer archivos xml
 
 #  C:\Users\Squery\Desktop\Proyecto 1 IPC2\Matriz.xml
 #  C:\Users\Squery\Desktop\Proyecto 1 IPC2\Matriz2.xml
+
 ruta = ""
 lista_enlazada = ListaDoblementeEnlazada()
 
-def cargar_archivo(): #Obtiene la ruta del archivo que se desea leer
+#Obtiene la ruta del archivo que se desea leer
+def cargar_archivo(): 
     global ruta 
     ruta = input()
     
-def procesar_archivo(ruta): #Este método lee el archivo y lo ingresa en los tda listas
+#Este método lee el archivo y lo ingresa en los tda listas
+def procesar_archivo(ruta): 
     global lista_enlazada
     try:
         #Se obtiene todo el archivo leído
