@@ -6,7 +6,6 @@ class ListaDoblementeEnlazada:
     def insertar_final(self, nombre, n, m, matriz):
         nodo_nuevo = Matrices(nombre, n, m)
         nodo_nuevo.matriz = matriz
-        #self.matriz = matriz
         if self.primero is None:
             self.primero = nodo_nuevo
         else:
@@ -19,7 +18,7 @@ class ListaDoblementeEnlazada:
     def mostrar(self):
         temporal = self.primero
         while temporal is not None:
-            print(temporal.nombre, " n=", temporal.n, " m=", temporal.m)
+            print(temporal.nombre, " n =", temporal.n, " m =", temporal.m)
             temporal.matriz.mostrar()
             temporal = temporal.siguiente
         
