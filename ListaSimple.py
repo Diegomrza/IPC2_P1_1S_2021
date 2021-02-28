@@ -19,8 +19,5 @@ class ListaSimple:
         while tmp is not None:
             print('ccx: ' + tmp.x + '\tccy: ' + tmp.y + '\tContenido: ' + tmp.contenido)
             tmp = tmp.siguiente
-    
-    def patrones(self):
-        print("hello")
-        self.mostrar()
-        return None
+        print("")
+        
