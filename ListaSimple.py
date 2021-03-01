@@ -17,7 +17,15 @@ class ListaSimple:
     def mostrar(self):
         tmp = self.primero
         while tmp is not None:
-            print('ccx: ' + tmp.x + '\tccy: ' + tmp.y + '\tContenido: ' + tmp.contenido)
+            print('ccx: ',  tmp.x, '\tccy: ', tmp.y, '\tContenido: ', tmp.contenido)
             tmp = tmp.siguiente
         print("")
-        
+    
+    def pos(self, fila, columna):
+        aux = self.primero
+        while aux != None:
+            if  aux.x == fila and aux.y == columna:
+                return aux.contenido
+            else:
+                aux = aux.siguiente
+        return None

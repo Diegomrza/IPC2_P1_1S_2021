@@ -30,14 +30,14 @@ def procesar_archivo(ruta):
             lista_simple = ListaSimple()
             #Con este for se ingresan todos los datos de una matriz en la lista simple 
             for subelemento in elemento: 
-                lista_simple.insertar(subelemento.attrib['x'], subelemento.attrib['y'], subelemento.text)
+                lista_simple.insertar(int(subelemento.attrib['x']), int(subelemento.attrib['y']), int(subelemento.text))
                 #Por cada elemento ingresado en la matriz temporal se aumenta en 1 el contador
                 contador += 1 
                 #Si los tamaños de n y m multiplicados coinciden con el numero del contador se ingresan
                 #los datos a la lista doble
             if int(elemento.attrib['n'])*int(elemento.attrib['m']) == contador and lista_enlazada.comprobar_nombre(elemento.attrib["nombre"]) != True:
                 #matriz_patrones(lista_simple)
-                lista_enlazada.insertar_final(elemento.attrib['nombre'], elemento.attrib['n'], elemento.attrib['m'], lista_simple)
+                lista_enlazada.insertar_final(elemento.attrib['nombre'], int(elemento.attrib['n']), int(elemento.attrib['m']), lista_simple)
                 
                 #Se verifica que si un nombre de la matriz ya existe, no se deje ingresar otra matriz con 
                 #el mismo nombre y se procede a cerrar el programa
@@ -75,7 +75,7 @@ while x:
     elif entrada == '2':
         print("Procesando archivo")
         procesar_archivo(ruta)
-        lista_enlazada.mostrar()
+        #lista_enlazada.mostrar()
 
     elif entrada == '3':
         print('opcion 3')

@@ -1,4 +1,5 @@
 from NodoMatrices import Matrices
+from ListaSimple import ListaSimple
 class ListaDoblementeEnlazada:
     def __init__(self):
         self.primero = None
@@ -6,6 +7,8 @@ class ListaDoblementeEnlazada:
     def insertar_final(self, nombre, n, m, matriz):
         nodo_nuevo = Matrices(nombre, n, m)
         nodo_nuevo.matriz = matriz
+        self.matroz(matriz, n, m)
+
         if self.primero is None:
             self.primero = nodo_nuevo
         else:
@@ -34,3 +37,18 @@ class ListaDoblementeEnlazada:
 
     def vacia(self):
         return self.primero == None
+
+    def matroz(self, matriz, n, m):
+
+        obj_l_p = ListaSimple()
+        
+        for i in range(0, n):
+            for j in range(0, m):
+                val = 0
+                if matriz.pos(i+1, j+1) > 0:
+                    val = 1
+                obj_l_p.insertar(i+1, j+1, val)
+                
+        print("\nMatriz binaria")
+        obj_l_p.mostrar()
+        
