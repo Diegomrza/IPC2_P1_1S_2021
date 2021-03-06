@@ -51,4 +51,3 @@ class ListaDoblementeEnlazada:
                 
         print("\nMatriz binaria")
         obj_l_p.mostrar()
-        

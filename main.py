@@ -52,7 +52,7 @@ def procesar_archivo(ruta):
         print('archivo procesado con exito\n')
     except IOError:
         #Si el archivo posee algun tipo de error muestra un mensaje de que no se pudo leer
-        print("El archivo no se pudo leer")
+        print("El archivo no se pudo leer", IOError)
 
 #Variable de tipo booleano para mantener el bucle while del menú siempre y cuando no se seleccione
 #la opción de salir
