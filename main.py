@@ -54,6 +54,11 @@ def procesar_archivo(ruta):
         #Si el archivo posee algun tipo de error muestra un mensaje de que no se pudo leer
         print("El archivo no se pudo leer", IOError)
 
+def crear_archivo():
+    
+    lista_enlazada.mostrar()
+    lista_enlazada.obtener_longitud()
+
 #Variable de tipo booleano para mantener el bucle while del menú siempre y cuando no se seleccione
 #la opción de salir
 x = True
@@ -76,18 +81,21 @@ while x:
         print("Procesando archivo")
         procesar_archivo(ruta)
         #lista_enlazada.mostrar()
-
+        
     elif entrada == '3':
-        print('opcion 3')
+        crear_archivo()
 
     elif entrada == '4':
-        print('opcion 4')
+        print('>Diego Abraham Robles Meza\n>201901429\n>Introducción a la programación y computación 2 Sección D\n>Ingeniería en ciencias y sistemas\n>5to Semestre')
 
     elif entrada == '5':
-        print('opcion 5')
+        print("ingrese el nombre de la matriz a graficar")
+        nombre = input()
+        lista_enlazada.grafos(nombre)
 
     elif entrada == '6':
         print('Saliento del programa')
         exit()
     elif int(entrada) > 6 or int(entrada) < 0:
         print('Opción inválida')
+

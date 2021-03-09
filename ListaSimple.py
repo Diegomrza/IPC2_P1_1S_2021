@@ -1,8 +1,10 @@
 from NodoSimple import NodoSimple
+from graphviz import Digraph
 
 class ListaSimple:
     def __init__(self):
         self.primero = None
+        self.id = None
     #Método que inserta al final
     def insertar(self, x, y, contenido):
         nuevo = NodoSimple(x, y, contenido)
@@ -36,10 +38,27 @@ class ListaSimple:
                 return aux.contenido
             aux = aux.siguiente
 
+    def obtener_nodo2(self,x,y):
+        aux = self.primero
+        while aux != None:
+            if aux.x == x and aux.y == y:
+                return str(aux.contenido)
+            aux = aux.siguiente
+
     def obtener_tamaño(self):
         aux = self.primero
         contador = 0
         while aux != None:
             contador += 1
             aux = aux.siguiente
-        return contador 
+        return contador
+    
+    def generar_grafica(self):
+
+        dot = Digraph(format='png',filename='Dir')
+        dot.node('M', label='Matriz')
+        dot.node('E', label='Ejemplo') 
+
+        dot.edges(['ME', 'EA', 'EB'])
+        dot.render(view=True)
+        
