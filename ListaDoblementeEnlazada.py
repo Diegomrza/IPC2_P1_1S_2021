@@ -105,7 +105,7 @@ class ListaDoblementeEnlazada:
             for y in range(0, aux.m):
                 g.edges([str(y)+str(matr.obtener_nodo(y+1,x+1))])  
         
-        g.render(view=True)
+        g.render(r"grafo.png",view=True)
         
     def obtener_longitud(self):
         aux = self.primero
